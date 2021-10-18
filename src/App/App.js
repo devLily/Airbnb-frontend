@@ -6,14 +6,19 @@ import reset from "styled-reset";
 
 import { history } from "../App/configStore";
 import Main from "../pages/Main";
+import Signup from "../pages/Signup";
+import Login from "../pages/Login";
 
 export default function App() {
+
   return (
     <React.Fragment>
       <GlobalStyle />
       <ConnectedRouter history={history}>
         <Switch>
           <Route path="/" component={Main} exact />
+          <Route path="/signup" component={Signup} exact />
+          <Route path="/login" component={Login} exact />
         </Switch>
       </ConnectedRouter>
     </React.Fragment>
