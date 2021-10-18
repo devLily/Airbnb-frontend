@@ -6,4 +6,4 @@ import { realtime } from "../../firebase";
 
 import styled from "styled-components";
 
-export default function Header(props) {}
+export default function NotiBadge(props) {}
