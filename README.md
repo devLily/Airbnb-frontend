@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# 항해99 clone coding frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Airbnb clone coding
 
-## Available Scripts
+- https://www.airbnb.co.kr/
 
-In the project directory, you can run:
+## 팀원
 
-### `yarn start`
+Frontend (React)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 배재경, 박시영, 류은설
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Backend (Spring)
 
-### `yarn test`
+- 남우식, 이다담, 김가민
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 프로젝트 기간
 
-### `yarn build`
+18oct ~ 22oct
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 프로젝트 상세 과정
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+https://foregoing-ursinia-218.notion.site/6-a58fc78b1fb44f15a797c19f3ee83e2d
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Github organization
 
-### `yarn eject`
+https://github.com/hanghae11
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Frontend Tech Spec
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React
+- Redux
+- Redux Thunk
+- Immer
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# 주요 기능
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- 회원가입 및 로그인, 로그아웃 (jwt)
+- 로그인을 통해 인증된 유저만 서비스 이용가능
+- 검색 기능 (위치별 숙소, 숙소별 특징 카테고리로 나눈 검색 가능)
+- 검색 결과 리스트 페이지에서 위시 아이템 선택 기능
+- 상세 페이지에서 해당 숙소에 대한 후기 코멘트 기능
+- 추가) 숙소에 대한 몇 가지 평가 항목에서 평점을 선택할 수 있고 해당 숙소에 대한 총 평점 평균을 확인할 수 있음
 
-## Learn More
+# Project 기간 중 고민했던 기술적 요소
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Day1
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. wish 기능 구현시 wishList명을 유저가 정할 수 있어서 서버에서 해당 wishList에 해당하는 게시물리스트를 받아서 구현하려고 했으나, 게시물 목록에서는 해당 리스트에 해당하는 wish만 표시되는것이 아니라 모든 wish가 표시되므로 위시리스트페이지를 구현하지 않는다면 wishList 이름을 정해서 응답을 받을 의미가 없다.
+   => wish여부만 응답으로 받는다.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. 포스팅 기능 구현의 필요 ? 상세페이지에서 후기를 남기는 기능과 평점으로 대신한다? 호스트 인증을 받지않고 로그인한 유저가 숙소를 등록할 수 있도록 한다
+3. 응답받을 데이터의 범위
