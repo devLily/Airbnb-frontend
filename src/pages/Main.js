@@ -9,32 +9,55 @@ import styled from "styled-components";
 
 export default function Main(props) {
   return (
-    <>
-      <LocationTitle>가까운 여행지 둘러보기</LocationTitle>
-      <PostWrap>
-        <LocationPost />
-      </PostWrap>
-      <LocationTitle>어디에서나, 여행은 살아보는 거야!</LocationTitle>
-      <PostWraps>
-        <FeaturePost />
-      </PostWraps>
-      <PostWraps>
-        <ExperPost />
-      </PostWraps>
-    </>
+    <MainConatainer>
+      <SearchSection></SearchSection>
+      <PostSection>
+        <LocationTitle>가까운 여행지 둘러보기</LocationTitle>
+        <PostWrap>
+          <LocationPost />
+        </PostWrap>
+      </PostSection>
+      <PostSection>
+        <LocationTitle>어디에서나, 여행은 살아보는 거야!</LocationTitle>
+        <PostWraps>
+          <FeaturePost />
+        </PostWraps>
+      </PostSection>
+      <PostSection>
+        <PostWraps>
+          <ExperPost />
+        </PostWraps>
+      </PostSection>
+    </MainConatainer>
   );
 }
 
+const MainConatainer = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+`;
+
+const SearchSection = styled.section`
+  width: 100vw;
+  height: 80vh;
+  background: url(/images/airbnbBack.jpeg);
+  background-size: cover;
+  background-position: center;
+`;
+
+const PostSection = styled.section`
+  padding: 50px 20px;
+`;
+
 const PostWrap = styled.div`
-  padding-left: 24px;
+  margin-top: 28px;
+  padding: 8px 0;
   scroll-padding: 0px 24px;
   overflow-x: auto;
   display: grid;
   gap: 12px;
   grid-template-rows: repeat(2, auto);
-  grid-template-columns:
-    repeat(calc(var(--column-count) - 1), calc(100% - 108px))
-    100%;
+  grid-template-columns: repeat(0, calc(100% - 108px)) 100%;
   grid-auto-flow: column;
   scroll-snap-type: x mandatory;
   box-sizing: border-box;
@@ -49,19 +72,20 @@ const TitleWrap = styled.div`
 `;
 
 const PostWraps = styled.div`
+  margin-top: 28px;
   display: grid;
   grid-auto-flow: column;
   overflow: auto hidden;
   //scroll-snap-type: x mandatory;
   gap: 12px;
-  padding: 15px;
+  padding: 8px 0;
   //grid-auto-columns: calc(100% - 84px);
 `;
 
 const LocationTitle = styled.h2`
   font-weight: 600;
-  font-size: 22px;
-  line-height: 26px;
+  font-size: 32px;
+  line-height: 32px;
   color: rgb(34, 34, 34);
-  margin: 20px;
+  /* margin: 20px; */
 `;

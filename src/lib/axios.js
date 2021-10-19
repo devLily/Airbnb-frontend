@@ -8,5 +8,6 @@ const instance = axios.create({
     accept: "application/json",
   },
 });
+instance.defaults.headers.common["Authorization"] = X - AUTH - TOKEN;
 
 export default instance;
