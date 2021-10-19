@@ -6,21 +6,22 @@ import Button from "../components/elements/Button";
 const Login = (props) => {
     return (
         <React.Fragment>
-<Wrap>
+            <Wrap>
                 <Title>로그인 또는 회원가입</Title>
                 <Hr></Hr>
-                <p>에어비앤비에 오신 것을 환영합니다.</p>
+                <SubTitle>에어비앤비에 오신 것을 환영합니다.</SubTitle>
                 <Select>
                     <option value="none">미국 (+1)</option>
+                    <option value="none">대한민국 (+82)</option>
                 </Select>
-                <input placeholder="전화번호"></input>
-                <h5>전화나 문자로 전화번호를 확인하겠습니다. 일반 문자 메시지 요금 및 데이터 요금이 부과됩니다. 개인정보 처리방침</h5>
+                <InputBottom placeholder="전화번호"></InputBottom>
+                <InfoMsg>전화나 문자로 전화번호를 확인하겠습니다. 일반 문자 메시지 요금 및 데이터 요금이 부과됩니다. 개인정보 처리방침</InfoMsg>
                 <Button
                     width="90%"
                     height="48px"
                     backGround="#da0d63"
                     color="#ffffff"
-                    // _onClick={}
+                // _onClick={}
                 >계속</Button>
                 <HrText>또는</HrText>
                 <Button
@@ -59,8 +60,23 @@ const Wrap = styled.div`
 `;
 
 const Title = styled.p`
-    font-size: 18px;
-    margin: auto;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 14px auto 6px auto;
+`;
+
+const SubTitle = styled.p`
+    width: 90%;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 20px 0 20px 0;
+`;
+
+const InfoMsg = styled.p`
+    width: 90%;
+    margin: 10px auto 18px auto;
+    font-size: 12px;
+    color: #000000;
 `;
 
 const Hr = styled.hr`
@@ -69,7 +85,18 @@ const Hr = styled.hr`
 
 const Select = styled.select`
     width: 90%;
+    height: 56px;
+    margin: 0 auto -1px auto;
+    border: 1px solid #afafaf;
+    border-radius: 8px 8px 0 0;
+`;
+
+const InputBottom = styled.input`
+    width: 90%;
+    height: 56px;
     margin: auto;
+    border: 1px solid #afafaf;
+    border-radius: 0 0 8px 8px;
 `;
 
 const HrText = styled.div`

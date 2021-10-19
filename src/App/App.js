@@ -8,6 +8,7 @@ import { history } from "../App/configStore";
 import Main from "../pages/Main";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
+import Tempmain from "../pages/Tempmain";
 
 export default function App() {
 
@@ -17,6 +18,7 @@ export default function App() {
       <ConnectedRouter history={history}>
         <Switch>
           <Route path="/" component={Main} exact />
+          <Route path="/tempmain" component={Tempmain} exact />
           <Route path="/signup" component={Signup} exact />
           <Route path="/login" component={Login} exact />
         </Switch>
