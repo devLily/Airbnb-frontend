@@ -1,0 +1,93 @@
+/* 공통 폰트 */
+.px14 {
+    font-size: 14px;
+    color: #717171;
+}
+
+/* 공통 마진 4 */
+.mt {
+    margin-top: 4px;
+}
+
+
+.site-content {
+    display: block;
+}
+
+.title {
+    padding: 24px;
+    font-size: 14px;
+    color: #222222;
+}
+
+.btnDiv > .btnDiv1:hover {
+        border: solid 1px black;
+    }
+.btnDiv > .btnDiv1 {
+    background-color: white;
+    max-width: 1600px;
+    padding: 8px 10px 8px 10px; 
+    text-align: center;
+    border: solid 1px gray;
+    margin: 0.3em;
+    margin-top: 15px;
+    border-radius: 30px;
+    color: #222222;
+}
+
+.cardBox {
+    display: block;
+    max-width: 1600px;
+    padding: 24px;
+}
+
+.card {
+    display: flex;
+    padding: 8px 8px 12px;
+}
+
+.cardText1 {
+    color: #717171;
+    margin-bottom: 4px;
+}
+
+.titleBox {
+    display: flex;
+}
+
+.loveBtn {
+    margin-left: 50px;
+}
+
+.line {
+    margin-top: 11px;
+    width: 32px;
+    color: #DDDDDD;
+    box-sizing: border-box;
+}
+
+.cardBorder {
+    font-size: 14px;
+    margin-top: 14px;
+    border: 1px solid #DDDDDD;
+    padding: 3px 4px;
+    max-width: 1120px;
+    width: 15vw;
+    text-align: center;
+}
+
+.star {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+}
+
+    
+.loveBtn {
+    background-color: white;
+    border: none;
+}
+.loveBtn01 {
+    width: 24px;
+    height: 24px;
+}

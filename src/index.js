@@ -7,10 +7,13 @@ import store from "./App/configStore";
 import reportWebVitals from "./reportWebVitals";
 
 import App from "./App/App";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <Provider store={store}>
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
