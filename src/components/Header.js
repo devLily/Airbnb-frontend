@@ -35,7 +35,7 @@ export default function Header(props) {
           </StickyBtn>
         </StcInputWrap>
         <NavWrap>
-          <HostLink>호스트 되기</HostLink>
+          <HostLink to="/write">호스트 되기</HostLink>
           {/* <GrLanguage color={scrollY === 0 ? "white" : "#222222"} /> */}
           <MdOutlineLanguage color={scrollY === 0 ? "white" : "#222222"} />
           <Label>
@@ -92,7 +92,7 @@ const HeaderContainer = styled.div`
   * {
     transition: all 0.2s;
   }
-  &::after {
+  /* &::after {
     box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px;
     content: "";
     position: absolute;
@@ -100,7 +100,7 @@ const HeaderContainer = styled.div`
     left: 0;
     height: 100%;
     width: 100%;
-  }
+  } */
 `;
 
 const LogoWrap = styled.div``;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCookie } from "../utils/cookie";
+// import { getCookie } from "../utils/cookie";
 
 const instance = axios.create({
   baseURL: "http://localhost:3000/",
@@ -8,6 +8,6 @@ const instance = axios.create({
     accept: "application/json",
   },
 });
-instance.defaults.headers.common["Authorization"] = X - AUTH - TOKEN;
+// instance.defaults.headers.common["Authorization"] = X - AUTH - TOKEN;
 
 export default instance;
