@@ -19,8 +19,6 @@ export default function App() {
         <Switch>
           <Route path="/" component={Main} exact />
           <Route path="/tempmain" component={Tempmain} exact />
-          <Route path="/signup" component={Signup} exact />
-          <Route path="/login" component={Login} exact />
         </Switch>
       </ConnectedRouter>
     </React.Fragment>

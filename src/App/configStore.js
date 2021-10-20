@@ -4,11 +4,13 @@ import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
 import user from "../redux/modules/user";
+import modal from "../redux/modules/modal";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   user: user,
+  modal: modal,
   router: connectRouter(history),
 });
 

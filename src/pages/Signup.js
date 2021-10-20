@@ -5,31 +5,32 @@ import styled from "styled-components";
 import Button from "../components/elements/Button";
 
 import { actionCreators as userActions } from "../redux/modules/user";
-// import {actionCreators as modalActions} from "../redux/modules/modal"
+import { actionCreators as modalActions } from "../redux/modules/modal";
 
 const Signup = (props) => {
 
     const dispatch = useDispatch();
-    const aaaaaa = useSelector((state) => state.user.list);
+    const eMail = useSelector((state) => state.user.email);
 
-    // const goToLogin = () => {
-    //     dispatch(modalActions.loginShow(true));
-    //     dispatch(modalActions.signupShow(false));
-    // }
+
     React.useEffect(() => {
-        console.log("bbbbb", aaaaaa)
-    }, [aaaaaa])
+        console.log("사인업컴포이메일", eMail)
+        console.log("사인업컴포이메일값", eMail[0].email)
+    }, [eMail])
 
     const [firstName, setFirstName] = React.useState();
     const [lastName, setLastName] = React.useState();
-    const [PW, setPW] = React.useState();
+    const [birth, setBirth] = React.useState();
+    const [pw, setPW] = React.useState();
 
     const signUpData = {
-        firstName: firstName,
-        lastName: lastName,
-        pw: PW,
+        username: lastName + firstName,
+        birth: birth,
+        email: eMail[0].email,
+        password: pw,
     }
     console.log("사인업데이터", signUpData)
+    console.log("생년월일타입확인", typeof userName)
 
 
     const changeFN = (e) => {
@@ -42,53 +43,78 @@ const Signup = (props) => {
         console.log("라스트네임", e.target.value)
     }
 
+    const changeBirth = (e) => {
+        setBirth(e.target.value);
+        console.log("생년월일", e.target.value)
+    }
+
     const changePW = (e) => {
         setPW(e.target.value);
         console.log("패스워드", e.target.value)
     }
 
-    const _createAccount = () => {
+    const addAccount = () => {
         dispatch(userActions.createAccountMW(signUpData));
-
+        dispatch(modalActions.ShowSignup(false));
+        dispatch(modalActions.ShowWelcome(true));
     };
 
 
     return (
         <React.Fragment>
             <Wrap>
-                <Title>회원 가입 완료하기</Title>
-                <Hr></Hr>
-                <InputTop placeholder="이름(예: 길동)" onChange={changeFN}></InputTop>
-                <InputBottom placeholder="성(예: 홍)" onChange={changeLN}></InputBottom>
-                <InfoMsg>정부 발급 신분증에 표시된 이름과 일치하는지 확인하세요.</InfoMsg>
-                <InputNormal type="date" placeholder="생년월일"></InputNormal>
-                <InfoMsg>만 18세 이상의 성인만 회원으로 가입할 수 있습니다. 생일은 에어비앤비의 다른 회원에게 공개되지 않습니다.</InfoMsg>
-                <InputNormal placeholder="이메일"></InputNormal>
-                <InfoMsg>예약 확인과 영수증을 이메일로 보내드립니다.</InfoMsg>
-                <InputDiv>
-                    <InputNormal placeholder="비밀번호" onChange={changePW}></InputNormal>
-                    <Span></Span>
-                    <Label>비밀번호</Label>
-                    <InfoMsg>아래의 동의 및 계속하기 버튼을 선택하면, 에어비앤비의 서비스 약관, 결제 서비스 약관, 개인정보 처리방침, 차별 금지 정책에 동의하는 것입니다.</InfoMsg>
-                </InputDiv>
-                <Button
-                    width="90%"
-                    height="48px"
-                    backGround="#da0d63"
-                    color="#ffffff"
-                    _onClick={_createAccount}
-                >동의 및 계속하기</Button>
-                <Hr></Hr>
-                <InfoMsg>에어비앤비 회원 전용 할인, 추천 여행 정보, 마케팅 이메일, 푸시 알림을 보내드립니다. 계정 설정 또는 마케팅 알림에서 언제든지 메시지 수신을 거부할 수 있습니다.</InfoMsg>
-                <CheckBoxDiv>
-                    <input type="checkbox" name="" value="" />
-                    <InfoMsg2>에어비앤비에서 보내는 마케팅 메시지를 받고 싶지 않습니다.</InfoMsg2>
-                </CheckBoxDiv>
+                <ModalBG>
+                    <Title>회원 가입 완료하기</Title>
+                    <Hr></Hr>
+                    <InputTop placeholder="이름(예: 길동)" onChange={changeFN}></InputTop>
+                    <InputBottom placeholder="성(예: 홍)" onChange={changeLN}></InputBottom>
+                    <InfoMsg>정부 발급 신분증에 표시된 이름과 일치하는지 확인하세요.</InfoMsg>
+                    <InputNormal type="date" placeholder="생년월일" onChange={changeBirth}></InputNormal>
+                    <InfoMsg>만 18세 이상의 성인만 회원으로 가입할 수 있습니다. 생일은 에어비앤비의 다른 회원에게 공개되지 않습니다.</InfoMsg>
+                    <InputNormal placeholder="이메일" value={eMail[0].email}></InputNormal>
+                    <InfoMsg>예약 확인과 영수증을 이메일로 보내드립니다.</InfoMsg>
+                    <InputDiv>
+                        <InputNormal placeholder="비밀번호" onChange={changePW}></InputNormal>
+                        <Span></Span>
+                        {/* <Label>비밀번호</Label> */}
+                        <InfoMsg>아래의 동의 및 계속하기 버튼을 선택하면, 에어비앤비의 서비스 약관, 결제 서비스 약관, 개인정보 처리방침, 차별 금지 정책에 동의하는 것입니다.</InfoMsg>
+                    </InputDiv>
+                    <Button
+                        width="90%"
+                        height="48px"
+                        backGround="#da0d63"
+                        color="#ffffff"
+                        _onClick={addAccount}
+                    >동의 및 계속하기</Button>
+                    <Hr></Hr>
+                    <InfoMsg>에어비앤비 회원 전용 할인, 추천 여행 정보, 마케팅 이메일, 푸시 알림을 보내드립니다. 계정 설정 또는 마케팅 알림에서 언제든지 메시지 수신을 거부할 수 있습니다.</InfoMsg>
+                    <CheckBoxDiv>
+                        <input type="checkbox" name="" value="" />
+                        <InfoMsg2>에어비앤비에서 보내는 마케팅 메시지를 받고 싶지 않습니다.</InfoMsg2>
+                    </CheckBoxDiv>
+                </ModalBG>
             </Wrap>
         </React.Fragment>
     )
 }
 
+const ModalBG = styled.div` 
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    width: 80vw; 
+    max-width: 568px; 
+    height: 80vh; 
+    background-color: #ffffff; 
+    z-index: 40; 
+    transform: translate(-50%, -50%); 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: center; 
+    border-radius: 10px; 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 2px 5px rgba(0, 0, 0, 0.24);
+`;
 
 const Wrap = styled.div`
     width: 100%;
@@ -111,6 +137,9 @@ const InfoMsg = styled.p`
 
 const Hr = styled.hr`
     width: 100%;
+    min-height: 1px;
+    border: none;
+    background-color: #e4e3e4;
 `;
 
 const InputTop = styled.input`
