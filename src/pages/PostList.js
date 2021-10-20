@@ -20,7 +20,7 @@ const PostList = (props) => {
                         fontWeight: "bold"
                     }}>서울의 숙소</span>
                     
-                    {/* 상세버튼 */}
+                    {/* 상세 버튼 */}
                     <div className="btnDiv">
                         <button className="btnDiv1"> 취소 수수료 없음</button>
                         <button className="btnDiv1">숙소 유형</button>
