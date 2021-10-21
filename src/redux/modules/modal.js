@@ -41,8 +41,9 @@ export default handleActions(
             draft.welcome = action.payload.boolean;
         }),
 
-        [WELCOME]:(state, action)=>produce(state,(draft)=>{
+        [TEMPLOGIN]:(state, action)=>produce(state,(draft)=>{
             draft.templogin = action.payload.boolean;
+            console.log("템프로그인", action.payload.boolean)
         }),
     },initialState
 )

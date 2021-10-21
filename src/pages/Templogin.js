@@ -30,12 +30,11 @@ const Templogin = (props) => {
         dispatch(modalActions.ShowTempLogin(false));
     }
 
-
     return (
         <React.Fragment>
             <ModalBG>
                 <Wrap>
-                    <Title>로그인 또는 회원가입</Title>
+                    <Title>로그인</Title>
                     <Hr></Hr>
                     <SubTitle>에어비앤비에 오신 것을 환영합니다.</SubTitle>
                     <InputTop value={eMail[0].email}></InputTop>
@@ -60,7 +59,7 @@ const ModalBG = styled.div`
     left: 50%; 
     width: 80vw; 
     max-width: 568px; 
-    height: 80vh; 
+    height: 40vh; 
     background-color: #ffffff; 
     z-index: 40; 
     transform: translate(-50%, -50%); 
@@ -94,19 +93,6 @@ const SubTitle = styled.p`
     margin: 20px auto 20px auto;
 `;
 
-const InfoMsg = styled.p`
-    font-size: 12px;
-    font-weight: 400;
-    color: #222222;
-    width: 90%;
-    margin: 10px auto 18px auto;
-`;
-
-const Span = styled.span`
-    font-weight: 550;
-    text-decoration: underline;
-`;
-
 const Hr = styled.hr`
     width: 100%;
     min-height: 1px;
@@ -128,7 +114,7 @@ const InputBottom = styled.input`
     color: #aeaeae;
     width: 90%;
     min-height: 56px !important;
-    margin: auto;
+    margin: 0 auto 20px auto;
     border: 1px solid #afafaf;
     border-radius: 0 0 8px 8px;
 `;
