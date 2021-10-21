@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 import Button from "../components/elements/Button";
 
-import { actionCreators as userActions } from "../redux/modules/user"
-import { actionCreators as modalActions } from "../redux/modules/modal";
+import { actionCreators as userActions } from "../features/user"
+import { actionCreators as modalActions } from "../features/modal";
 
 
 const LoginB = (props) => {
@@ -102,7 +102,6 @@ const ModalBG = styled.div`
     align-items: center; 
     border-radius: 10px; 
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 2px 5px rgba(0, 0, 0, 0.24);
-
 `;
 
 const Wrap = styled.div`
@@ -168,7 +167,6 @@ const HrText = styled.div`
 	    line-height: 0px;
 	    margin: 0px 16px;
     }
-
 `;
 
 

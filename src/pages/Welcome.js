@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import Button from "../components/elements/Button";
 
-import {actionCreators as modalActions} from "../redux/modules/modal"
+import {actionCreators as modalActions} from "../features/modal"
 
 const Signup = (props) => {
 
@@ -22,7 +22,7 @@ const Signup = (props) => {
                 <ModalBG>
                     <Title>프로필 생성하기</Title>
                     <Hr></Hr>
-                    <Img src = "img/airbnblogo.png"/>
+                    <Img src = "images/airbnbLogo.png"/>
                     <SubTitle>에어비앤비에 오신 것을 환영합니다.</SubTitle>
                     <SubMsg>전 세계 숙소, 현지 레스토랑 및 독특한 체험을 찾아보세요.</SubMsg>
                     <Button
@@ -84,7 +84,6 @@ const SubMsg = styled.p`
     font-size: 16px;
     color: #222222;
     text-align: center;
-
 `;
 
 const Hr = styled.hr`

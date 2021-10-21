@@ -1,48 +1,35 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
-import PostListItem from "../components/PostListItem";
+import { ImStarEmpty } from "react-icons/im";
+import { BsSuitHeart } from "react-icons/bs";
 
-export default function PostList(props) {
-  const postList = useSelector((state) => state.post.list);
+import Image from "../components/elements/Image";
+
+export default function PostListItem(props) {
   return (
-    <PostListContainer>
-      <HeaderWrap>
-        <SpanTitle>300개 이상의 숙소</SpanTitle>
-        <TextTitle>부산의 숙소</TextTitle>
-        <HeaderButtonWrap>
-          <PostListItems>
-            <LiButton>취소 수수료 없음</LiButton>
-          </PostListItems>
-          <PostListItems>
-            <LiButton>숙소 유형</LiButton>
-          </PostListItems>
-          <PostListItems>
-            <LiButton>요금</LiButton>
-          </PostListItems>
-          <PostListItems>
-            <LiButton>즉시 예약</LiButton>
-          </PostListItems>
-          <PostListItems>
-            <LiButton>필터 추가하기</LiButton>
-          </PostListItems>
-        </HeaderButtonWrap>
-        <TitleText>
-          여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수
-          있습니다.
-        </TitleText>
-        <br />
-        <TitleTextSec>
-          예약하기 전에 코로나19 관련 여행 제한 사항을 확인하세요.{" "}
-          <TitleTextLink href="#" target="self">
-            자세히 알아보기
-          </TitleTextLink>
-        </TitleTextSec>
-      </HeaderWrap>
-      {postList.map((post) => {
-        return <PostListItem key={post.postId} post={post} />;
-      })}
-    </PostListContainer>
+    <PostListWrap>
+      <PostListItems>
+        <ImageWrap>
+          <Images src="/images/eorn.jpeg" alt="" />
+          {/* <Images src={} alt="" /> */}
+        </ImageWrap>
+        <DetailWrap>
+          <TitleText>user님의 숙소</TitleText>
+          {/* <TitleText>{user}님의 숙소</TitleText> */}
+          <RoomName>roomName</RoomName>
+          {/* <RoomName>{roomName}</RoomName> */}
+          <TitleText>contents</TitleText>
+          {/* <TitleText>{contents}</TitleText> */}
+          <StarWrap>
+            <ImStarEmpty />
+            <span>0.0 (후기 0개)</span>
+          </StarWrap>
+        </DetailWrap>
+        <HeartWrap>
+          <BsSuitHeart />
+        </HeartWrap>
+      </PostListItems>
+    </PostListWrap>
   );
 }
 

@@ -2,7 +2,7 @@ import produce from "immer";
 import {createAction, handleActions} from "redux-actions";
 import {Cookies} from "react-cookie";
 
-import {apis} from "../../utils/apis";
+import {apis} from "../utils/apis";
 
 
 const initialState = {
