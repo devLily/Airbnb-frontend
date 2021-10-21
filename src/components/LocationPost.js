@@ -60,14 +60,17 @@ export default function LocationPost(props) {
   return (
     <>
       {locationList.map((post) => {
+        const { key, src, text, disText, location } = post;
         return (
-          <Image
-            key={post.key}
-            src={post.src}
-            size="small"
-            text={post.text}
-            disText={post.disText}
-          />
+          <Link key={key} to={`/post?location=${location}`}>
+            <Image
+              key={key}
+              src={src}
+              size="small"
+              text={text}
+              disText={disText}
+            />
+          </Link>
         );
       })}
     </>

@@ -4,9 +4,10 @@ import { ConnectedRouter } from "connected-react-router";
 import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
-import { history } from "../App/configStore";
+import { history } from "./configStore";
 import Main from "../pages/Main";
 import PostWrite from "../pages/PostWrite";
+import PostList from "../pages/PostList";
 import Header from "../components/Header";
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
           <Switch>
             <Route path="/" component={Main} exact />
             <Route path="/write" component={PostWrite} exact />
+            <Route path="/posts" component={PostList} exact />
           </Switch>
         </MainContainer>
       </ConnectedRouter>

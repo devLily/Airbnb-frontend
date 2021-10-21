@@ -51,6 +51,7 @@ const PostMiddleWare = (contents) => {
       .createPost({ ...contents, cost: Number(contents.cost) })
       .then((res) => {
         console.log(res);
+        console.log(contents);
         window.alert("게시물 업로드 성공");
         window.location.href = "/";
       })

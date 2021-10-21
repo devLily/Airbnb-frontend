@@ -32,17 +32,15 @@ export default function Main(props) {
   );
 }
 
-const MainConatainer = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-`;
+const MainConatainer = styled.div``;
 
 const SearchSection = styled.section`
   width: 100vw;
   height: 80vh;
   background: url(/images/airbnbBack.jpeg);
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
+  margin-top: -80px;
 `;
 
 const PostSection = styled.section`

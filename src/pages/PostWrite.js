@@ -126,7 +126,7 @@ export default function PostWriite(props) {
       />
       <button onClick={uploadFB}>업로드하기</button>
       <p>미리보기</p>
-      <img
+      <Preview
         src={preview ? preview : "http://via.placeholder.com/400X300"}
         alt=""
       />
@@ -195,4 +195,9 @@ const PostBtn = styled.button`
     color: #ff385c;
     background-color: white;
   }
+`;
+
+const Preview = styled.img`
+  width: 400px;
+  height: 300px;
 `;

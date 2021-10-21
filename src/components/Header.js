@@ -1,22 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { GoSearch } from "react-icons/go";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { FaSearch } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
-import { GrLanguage } from "react-icons/gr";
 import { MdOutlineLanguage } from "react-icons/md";
 import styled from "styled-components";
-
+import { actionCreators as modalActions } from "../features/modal";
 import useWindowScroll from "../hooks/useScroll";
 
+import Menu from "./elements/Menu";
 export default function Header(props) {
+  const dispatch = useDispatch();
   const { position } = props;
+  const location = useLocation();
+  const [openMenu, setOpenMenu] = useState(false);
+  const loginCtrl = useSelector((state) => state.modal.login);
+  const loginCtrlB = useSelector((state) => state.modal.login_B);
+  const signUpCtrl = useSelector((state) => state.modal.signup);
+  const welcomeCtrl = useSelector((state) => state.modal.welcome);
+
+  const openLogin = () => {
+    dispatch(modalActions.ShowLogin(true));
+  };
+
+  const toggleMenu = (isOpen) => {
+    setOpenMenu(isOpen);
+  };
+
   const { y: scrollY } = useWindowScroll();
+
+  const isOnTop = scrollY === 0 && location.pathname === "/";
 
   if (position === "sticky") {
     return (
-      <HeaderContainer isOnTop={scrollY === 0}>
+      <HeaderContainer isOnTop={isOnTop}>
         <LogoWrap>
           <LogoLink to="/">
             <div className="pc">
@@ -30,22 +47,19 @@ export default function Header(props) {
         <StcInputWrap>
           <StickyInput />
           <StickyBtn>
-            {/* <GoSearch size={13} color="white" /> */}
             <FaSearch size={13} color="white" />
           </StickyBtn>
         </StcInputWrap>
         <NavWrap>
           <HostLink to="/write">호스트 되기</HostLink>
           {/* <GrLanguage color={scrollY === 0 ? "white" : "#222222"} /> */}
-          <MdOutlineLanguage color={scrollY === 0 ? "white" : "#222222"} />
+          <MdOutlineLanguage color={isOnTop ? "white" : "#222222"} />
           <Label>
-            <LabelBtn>
-              <AiOutlineMenu
-                size={14}
-                color={scrollY === 0 ? "white" : "#222222"}
-              />
+            <LabelBtn onClick={() => toggleMenu(true)}>
+              <AiOutlineMenu size={14} color={isOnTop ? "white" : "#222222"} />
               <User src="/images/user.png" />
             </LabelBtn>
+            {openMenu && <Menu toggleMenu={toggleMenu} />}
           </Label>
         </NavWrap>
       </HeaderContainer>
@@ -152,6 +166,7 @@ const StickyBtn = styled.button`
   padding: 10px;
   width: 32px;
 `;
+
 const NavWrap = styled.nav`
   display: flex;
   justify-content: space-around;
@@ -161,10 +176,12 @@ const NavWrap = styled.nav`
     margin: 0 6px;
   }
 `;
+
 const HostLink = styled(Link)`
   text-decoration: none;
   color: inherit;
 `;
+
 const Label = styled.div`
   background: transparent;
   border: 1px solid #dddddd;
@@ -172,6 +189,7 @@ const Label = styled.div`
   color: inherit;
   width: 80px;
   height: 40px;
+  position: relative;
 `;
 
 const LabelBtn = styled.button`
