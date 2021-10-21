@@ -38,7 +38,7 @@ const Templogin = (props) => {
                     <Hr></Hr>
                     <SubTitle>에어비앤비에 오신 것을 환영합니다.</SubTitle>
                     <InputTop value={eMail[0].email}></InputTop>
-                    <InputBottom placeholder="비밀번호" onChange={changePW}></InputBottom>
+                    <InputBottom type="password" placeholder="비밀번호" onChange={changePW}></InputBottom>
                     {/* <InfoMsg>전화나 문자로 전화번호를 확인하겠습니다. 일반 문자 메시지 요금 및 데이터 요금이 부과됩니다. <Span>개인정보 처리방침</Span></InfoMsg> */}
                     <Button
                         width="90%"
