@@ -7,13 +7,12 @@ import { actionCreators as imageActions } from "./image";
 import moment from "moment";
 
 const LOAD_POSTS = "LOAD_POSTS";
-const SET_POST = "post/SET_POST";
 const ADD_POST = "post/ADD_POST";
 const LOADING = "post/LOADING";
 
 const loadPosts = createAction(LOAD_POSTS, (list) => ({ list }));
-const setPost = createAction(SET_POST, (postList) => ({ postList }));
-const addPost = createAction(ADD_POST, (post) => ({ post }));
+//const setPost = createAction(SET_POST, (postList) => ({ postList }));
+//const addPost = createAction(ADD_POST, (post) => ({ post }));
 const loading = createAction(LOADING, (isLoading) => ({ isLoading }));
 
 const initialState = {
@@ -29,12 +28,13 @@ const initialPost = {
   image: "",
 };
 
-const getPostList = () => {
+const getPostList = (location) => {
   return (dispatch) => {
     apis
-      .getListbyLocations()
+      .getListbyLocations(location)
       .then((res) => {
-        //console.log("results:", res.data.results);
+        console.log("results:", res.data.results);
+        console.log("results:", res.data.object);
         const postList = res.data.object;
         dispatch(loadPosts(postList));
       })

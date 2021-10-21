@@ -5,26 +5,28 @@ import { FaSearch } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdOutlineLanguage } from "react-icons/md";
 import styled from "styled-components";
-import { actionCreators as modalActions } from "../features/modal";
-import useWindowScroll from "../hooks/useScroll";
 
+import { actionCreators as postActions } from "../features/post";
+import useWindowScroll from "../hooks/useScroll";
 import Menu from "./elements/Menu";
+
 export default function Header(props) {
   const dispatch = useDispatch();
   const { position } = props;
   const location = useLocation();
+  const [searchInput, setSearchInput] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
-  const loginCtrl = useSelector((state) => state.modal.login);
-  const loginCtrlB = useSelector((state) => state.modal.login_B);
-  const signUpCtrl = useSelector((state) => state.modal.signup);
-  const welcomeCtrl = useSelector((state) => state.modal.welcome);
-
-  const openLogin = () => {
-    dispatch(modalActions.ShowLogin(true));
-  };
 
   const toggleMenu = (isOpen) => {
     setOpenMenu(isOpen);
+  };
+
+  const ChangeSearchWord = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const getKeywordList = () => {
+    dispatch(postActions.getPostList(searchInput));
   };
 
   const { y: scrollY } = useWindowScroll();
@@ -39,20 +41,16 @@ export default function Header(props) {
             <div className="pc">
               <LogoImage src="/images/Airbnb.png" alt="logo" />
             </div>
-            {/* <div className="mobile">
-              <LogoImage src="/images/Airbnb.png" alt="logo" />
-            </div> */}
           </LogoLink>
         </LogoWrap>
         <StcInputWrap>
-          <StickyInput />
-          <StickyBtn>
+          <StickyInput value={searchInput} onChange={ChangeSearchWord} />
+          <StickyBtn onClick={getKeywordList}>
             <FaSearch size={13} color="white" />
           </StickyBtn>
         </StcInputWrap>
         <NavWrap>
           <HostLink to="/write">호스트 되기</HostLink>
-          {/* <GrLanguage color={scrollY === 0 ? "white" : "#222222"} /> */}
           <MdOutlineLanguage color={isOnTop ? "white" : "#222222"} />
           <Label>
             <LabelBtn onClick={() => toggleMenu(true)}>
@@ -86,35 +84,11 @@ const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background: url(/images/airbnbBack.jpeg);
-  background-size: cover; */
-  /* display: flex;
-  flex-direction: row;
-  align-items: start;
-  width: 100%;
-  height: 30%; */
-
-  /* background-color: #0438ae;
-  display: flex;
-  justify-content: space-between;
-  align-items: cneter;
-  width: 100%;
-  height: 70px;
-  padding: 0 20px; */
   transition: all 0.2s;
 
   * {
     transition: all 0.2s;
   }
-  /* &::after {
-    box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-  } */
 `;
 
 const LogoWrap = styled.div``;

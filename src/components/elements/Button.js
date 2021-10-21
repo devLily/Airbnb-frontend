@@ -15,6 +15,7 @@ const Button = (props) => {
     color,
     backGround,
   } = props;
+
   const styles = {
     fontSize: fontSize,
     width: width,

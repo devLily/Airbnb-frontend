@@ -10,7 +10,7 @@ const useWindowScroll = () => {
     const handler = () => {
       setState((state) => {
         const { pageXOffset, pageYOffset } = window;
-        console.log("pageYOffset", pageYOffset);
+        //console.log("pageYOffset", pageYOffset);
         //Check state for change, return same state if no change happened to prevent rerender
         //(see useState/setState documentation). useState/setState is used internally in useRafState/setState.
         return state.x !== pageXOffset || state.y !== pageYOffset
