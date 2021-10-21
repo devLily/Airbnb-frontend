@@ -8,17 +8,20 @@ const initialState = {
     login_B : false,
     signup: false,
     welcome: false,
+    templogin: false,
 }
 
 const LOGIN = "LOGIN";
 const LOGIN_B = "LOGIN_B";
 const SIGNUP = "SIGN_UP";
 const WELCOME = "WELCOME";
+const TEMPLOGIN = "TEMPLOGIN";
 
 const ShowLogin = createAction(LOGIN,(boolean)=>({boolean}));
 const ShowLogin_B = createAction(LOGIN_B,(boolean)=>({boolean}));
 const ShowSignup = createAction(SIGNUP,(boolean)=>({boolean}));
-const ShowWelcome = createAction(WELCOME,(boolean)=>({boolean}))
+const ShowWelcome = createAction(WELCOME,(boolean)=>({boolean}));
+const ShowTempLogin = createAction(TEMPLOGIN,(boolean)=>({boolean}));
 
 export default handleActions(
     {
@@ -37,6 +40,10 @@ export default handleActions(
         [WELCOME]:(state, action)=>produce(state,(draft)=>{
             draft.welcome = action.payload.boolean;
         }),
+
+        [WELCOME]:(state, action)=>produce(state,(draft)=>{
+            draft.templogin = action.payload.boolean;
+        }),
     },initialState
 )
 
@@ -44,7 +51,8 @@ const actionCreators = {
     ShowLogin,
     ShowLogin_B,
     ShowSignup,
-    ShowWelcome
+    ShowWelcome,
+    ShowTempLogin,
 };
 
 export {

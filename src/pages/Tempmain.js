@@ -6,6 +6,7 @@ import Login from "./Login";
 import LoginB from "./LoginB";
 import Signup from "./Signup";
 import Welcome from "./Welcome";
+import Templogin from "./Templogin";
 
 const Tempmain = (props) => {
 
@@ -14,6 +15,7 @@ const Tempmain = (props) => {
     const loginCtrlB = useSelector((state) => state.modal.login_B);
     const signUpCtrl = useSelector((state) => state.modal.signup);
     const welcomeCtrl = useSelector((state) => state.modal.welcome);
+    const tempLoginCtrl = useSelector((state) => state.modal.templogin);
 
     const openLogin = () => {
         dispatch(modalActions.ShowLogin(true));
@@ -26,6 +28,7 @@ const Tempmain = (props) => {
             {loginCtrlB ? <LoginB/> : null}
             {signUpCtrl ? <Signup/> : null}
             {welcomeCtrl ? <Welcome/> : null}
+            {tempLoginCtrl ? <Templogin/> : null}
         </React.Fragment>
     )
 }

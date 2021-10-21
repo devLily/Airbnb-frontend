@@ -1,6 +1,9 @@
 import produce from "immer";
 import {createAction, handleActions} from "redux-actions";
-import {apis} from "../../utils/apis"
+import {Cookies} from "react-cookie";
+
+import {apis} from "../../utils/apis";
+
 
 const initialState = {
     list: [],
@@ -29,6 +32,24 @@ const createAccountMW = (signUpData) => {
     }
 }
 
+const loginMW = (loginData) => {
+    return function (dispatch) {
+        const cookies = new Cookies();
+        apis
+            .loginAX(loginData)
+            .then((res) => {
+                console.log("로그인res", res)
+                if (res.data.msg === "로그인 성공했습니다") {
+                    cookies.set('token', res.data.token);
+                } else {
+                    window.alert("로그인 실패")
+                }
+            }).catch((err) => {
+                console.log("로그인실패", err)
+            })
+    }
+}
+
 
 export default handleActions({
     [CREATE_ACCOUNT]: (state, action) => produce(state, (draft) => {
@@ -48,6 +69,7 @@ const actionCreators = {
     createAccount,
     createAccountMW,
     createEmail,
+    loginMW,
 };
 
 export {
