@@ -7,10 +7,12 @@ import { actionCreators as imageActions } from "./image";
 import moment from "moment";
 
 const LOAD_POSTS = "LOAD_POSTS";
+const SET_LOCATION = "SET_LOCATION";
 const ADD_POST = "post/ADD_POST";
 const LOADING = "post/LOADING";
 
 const loadPosts = createAction(LOAD_POSTS, (list) => ({ list }));
+const setLocation = createAction(SET_LOCATION, (location) => ({ location }));
 //const setPost = createAction(SET_POST, (postList) => ({ postList }));
 //const addPost = createAction(ADD_POST, (post) => ({ post }));
 const loading = createAction(LOADING, (isLoading) => ({ isLoading }));
@@ -18,6 +20,7 @@ const loading = createAction(LOADING, (isLoading) => ({ isLoading }));
 const initialState = {
   list: [],
   isLoading: false,
+  location: "",
 };
 
 const initialPost = {
@@ -29,14 +32,16 @@ const initialPost = {
 };
 
 const getPostList = (location) => {
-  return (dispatch) => {
+  return (dispatch, { history }) => {
     apis
       .getListbyLocations(location)
       .then((res) => {
-        console.log("results:", res.data.results);
         console.log("results:", res.data.object);
         const postList = res.data.object;
         dispatch(loadPosts(postList));
+
+        //dispatch(setLocation(location));
+        //window.location.href = `/searches/${location}`;
       })
       .catch((error) => {
         window.alert("게시물을 불러오는데 실패하였습니다.");
@@ -75,6 +80,10 @@ export default handleActions(
         // draft.list = action.payload.list;
         draft.list.push(action.payload.list);
       }),
+    [SET_LOCATION]: (state, action) =>
+      produce(state, (draft) => {
+        draft.location = action.payload.location;
+      }),
   },
   initialState
 );
@@ -83,4 +92,5 @@ export const actionCreators = {
   loadPosts,
   getPostList,
   PostMiddleWare,
+  setLocation,
 };

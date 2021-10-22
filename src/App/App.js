@@ -19,8 +19,8 @@ export default function App() {
         <MainContainer>
           <Switch>
             <Route path="/" component={Main} exact />
-            <Route path="/write" component={PostWrite} exact />
-            <Route path="/posts" component={PostList} exact />
+            <Route path="/rooms" component={PostWrite} exact />
+            <Route path="/searches/:location" component={PostList} exact />
           </Switch>
         </MainContainer>
       </ConnectedRouter>

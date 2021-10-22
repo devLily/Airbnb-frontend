@@ -8,9 +8,10 @@ const instance = axios.create({
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json",
-    Authorization: `X - AUTH - TOKEN: ${cookies.get("token")}`,
-    //"X - AUTH - TOKEN": `${cookies.get("token")}`,
+    // Authorization: `X-AUTH-TOKEN: ${cookies.get("token")}`,
+    "X-AUTH-TOKEN": `${cookies.get("token")}`,
   },
+  withCredentials: true,
 });
 // instance.defaults.headers.common["Authorization"] = X - AUTH - TOKEN;
 
