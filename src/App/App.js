@@ -1,24 +1,37 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
-import { history } from "../App/configStore";
+import { history } from "./configStore";
 import Main from "../pages/Main";
+import PostWrite from "../pages/PostWrite";
+import PostList from "../pages/PostList";
+import Header from "../components/Header";
 
 export default function App() {
   return (
     <React.Fragment>
       <GlobalStyle />
       <ConnectedRouter history={history}>
-        <Switch>
-          <Route path="/" component={Main} exact />
-        </Switch>
+        <Header position="sticky" />
+        <MainContainer>
+          <Switch>
+            <Route path="/" component={Main} exact />
+            <Route path="/rooms" component={PostWrite} exact />
+            <Route path="/searches/:location" component={PostList} exact />
+            <Redirect from="*" to="/" />
+          </Switch>
+        </MainContainer>
       </ConnectedRouter>
     </React.Fragment>
   );
 }
+
+const MainContainer = styled.main`
+  width: 100%;
+`;
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
