@@ -4,13 +4,14 @@ import styled from "styled-components";
 
 import Button from "../components/elements/Button";
 
-import { actionCreators as modalActions } from "../redux/modules/modal";
+import { actionCreators as modalActions } from "../features/modal";
 
 const Signup = (props) => {
   const dispatch = useDispatch();
 
-  const exitModal = () => {
+  const openTempLogin = () => {
     dispatch(modalActions.ShowWelcome(false));
+    dispatch(modalActions.ShowTempLogin(true));
   };
 
   return (
@@ -19,19 +20,19 @@ const Signup = (props) => {
         <ModalBG>
           <Title>프로필 생성하기</Title>
           <Hr></Hr>
-          <Img src="img/airbnblogo.png" />
+          <Img src="images/airbnbLogo.png" />
           <SubTitle>에어비앤비에 오신 것을 환영합니다.</SubTitle>
           <SubMsg>
             전 세계 숙소, 현지 레스토랑 및 독특한 체험을 찾아보세요.
           </SubMsg>
           <Button
-            width="100%"
+            width="90%"
             height="48px"
             backGround="#222222"
             color="#ffffff"
-            _onClick={exitModal}
+            _onClick={openTempLogin}
           >
-            계속
+            로그인하러 가기
           </Button>
         </ModalBG>
       </Wrap>

@@ -1,9 +1,12 @@
 import { useCallback, useRef, useEffect } from "react";
-
 import styled from "styled-components";
+
+import { actionCreators as modalActions } from "../../features/modal";
+import { useDispatch } from "react-redux";
 
 export default function Menu({ toggleMenu }) {
   const menuRef = useRef();
+  const dispatch = useDispatch();
 
   const handleClickOutside = useCallback(
     (event) => {
@@ -24,16 +27,18 @@ export default function Menu({ toggleMenu }) {
     };
   }, [handleClickOutside, menuRef]);
 
+  const openLogin = () => {
+    dispatch(modalActions.ShowLogin(true));
+  };
+
   return (
     <MenuContainer className="menu-container" ref={menuRef}>
       <MenuListWrap>
         <MenuListItem>
-          <MenuListButton onClick={() => (window.location.href = "/login")}>
-            로그인
-          </MenuListButton>
+          <MenuListButton onClick={openLogin}>로그인</MenuListButton>
         </MenuListItem>
         <MenuListItem>
-          <MenuListButton>회원가입</MenuListButton>
+          <MenuListButton onClick={openLogin}>회원가입</MenuListButton>
         </MenuListItem>
         <MenuListItem>
           <MenuListButton>희희희희희</MenuListButton>

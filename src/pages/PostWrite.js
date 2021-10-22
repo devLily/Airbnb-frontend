@@ -11,6 +11,7 @@ export default function PostWriite(props) {
   const inputFile = useRef();
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
+  const user = useSelector((state) => state.user.list);
   const image = useSelector((state) => state.image.imageUrl);
   const isUploading = useSelector((state) => state.image.isUpload);
   const [inputValue, setInputValue] = useState({

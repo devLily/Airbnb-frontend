@@ -14,4 +14,8 @@ export const apis = {
   // 위시리스트 불러오기
   deleteWishes: (roomId) => instance.delete("/wishes", { roomId }),
   // 위시리스트 삭제
+  createAccountAX: (signUpData) => instance.post("/users", signUpData),
+  // 계정 생성하기
+  loginAX: (loginData) => instance.post("/users/login", loginData),
+  // 로그인하기
 };

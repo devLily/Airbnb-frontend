@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 import Button from "../components/elements/Button";
 
-import { actionCreators as userActions } from "../redux/modules/user";
-import { actionCreators as modalActions } from "../redux/modules/modal";
+import { actionCreators as userActions } from "../features/user";
+import { actionCreators as modalActions } from "../features/modal";
 
 const Signup = (props) => {
   const dispatch = useDispatch();

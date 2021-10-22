@@ -62,7 +62,7 @@ export default function LocationPost(props) {
       {locationList.map((post) => {
         const { key, src, text, disText, location } = post;
         return (
-          <Link key={key} to={`/post?location=${location}`}>
+          <Link key={key} to={`/searches?location=${location}`}>
             <Image
               key={key}
               src={src}
