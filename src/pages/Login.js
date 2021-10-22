@@ -87,7 +87,7 @@ const Login = (props) => {
             fontSize="14px"
             _onClick={openLoginB}
           >
-            이메일로 로그인하기
+            이메일로 계속하기
           </Button>
         </Wrap>
       </ModalBG>

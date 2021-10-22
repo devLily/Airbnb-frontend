@@ -1,13 +1,19 @@
 import { useCallback, useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { Cookies } from "react-cookie";
 
 import { actionCreators as modalActions } from "../../features/modal";
+import { actionCreators as userActions } from "../../features/user";
 
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+
+
 
 export default function Menu({ toggleMenu }) {
   const menuRef = useRef();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleClickOutside = useCallback(
     (event) => {
@@ -28,29 +34,54 @@ export default function Menu({ toggleMenu }) {
     };
   }, [handleClickOutside, menuRef]);
 
+  const cookies = new Cookies();
+  const isLogin = cookies.get('token') ? true : false;
+  console.log("이즈로그인", isLogin)
+
   const openLogin = () => {
     dispatch(modalActions.ShowLogin(true));
   };
 
+  const openTempLogin = () => {
+    dispatch(modalActions.ShowTempLogin(true));
+  };
+
+  const logOut = () => {
+    cookies.remove('token')
+    history.replace("/")
+  }
+
+  if(!isLogin){
+    return (
+      <MenuContainer className="menu-container" ref={menuRef}>
+        <MenuListWrap>
+          <MenuListItem>
+            <MenuListButton onClick={openTempLogin}>
+              로그인
+            </MenuListButton>
+          </MenuListItem>
+          <MenuListItem>
+            <MenuListButton onClick={openLogin}>
+              회원가입
+            </MenuListButton>
+          </MenuListItem>
+        </MenuListWrap>
+      </MenuContainer>
+    );
+  }
+
   return (
     <MenuContainer className="menu-container" ref={menuRef}>
-      <MenuListWrap>
-        <MenuListItem>
-          <MenuListButton onClick={openLogin}>
-            로그인
-          </MenuListButton>
-        </MenuListItem>
-        <MenuListItem>
-          <MenuListButton onClick={openLogin}>
-            회원가입
-          </MenuListButton>
-        </MenuListItem>
-        <MenuListItem>
-          <MenuListButton>희희희희희</MenuListButton>
-        </MenuListItem>
-      </MenuListWrap>
-    </MenuContainer>
-  );
+        <MenuListWrap>
+          <MenuListItem>
+            <MenuListButton onClick={logOut}>
+              로그아웃
+            </MenuListButton>
+          </MenuListItem>
+        </MenuListWrap>
+      </MenuContainer>
+  )
+  
 }
 
 const MenuContainer = styled.div`
