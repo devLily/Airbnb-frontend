@@ -4,6 +4,10 @@ Airbnb clone coding
 
 - https://www.airbnb.co.kr/
 
+배포완료
+
+- http://airfnf.s3-website.ap-northeast-2.amazonaws.com/
+
 ## 팀원
 
 Frontend (React)
@@ -37,10 +41,7 @@ https://github.com/hanghae11
 
 - 회원가입 및 로그인, 로그아웃 (jwt)
 - 로그인을 통해 인증된 유저만 서비스 이용가능
-- 검색 기능 (위치별 숙소, 숙소별 특징 카테고리로 나눈 검색 가능)
-- 검색 결과 리스트 페이지에서 위시 아이템 선택 기능
-- 상세 페이지에서 해당 숙소에 대한 후기 코멘트 기능
-- 추가) 숙소에 대한 몇 가지 평가 항목에서 평점을 선택할 수 있고 해당 숙소에 대한 총 평점 평균을 확인할 수 있음
+- 검색 기능 (위치별 숙소 카테고리로 나눈 검색 가능)
 
 # Project 기간 중 고민했던 기술적 요소
 

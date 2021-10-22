@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { ImStarEmpty } from "react-icons/im";
 import { AiFillStar } from "react-icons/ai";
 import { ImStarEmpty } from "react-icons/im";
 import { BsSuitHeart } from "react-icons/bs";
@@ -15,7 +14,14 @@ export default function PostListItem({ post }) {
     <PostListWrap>
       <PostListItems>
         <ImageWrap>
-          <Images src="/images/eorn.jpeg" alt="" />
+          <Images
+            src={
+              image
+                ? image
+                : "http://www.cleandropleon.com/sistema/assets/images/services/default.png"
+            }
+            alt=""
+          />
         </ImageWrap>
         <DetailWrap>
           <TitleText>OOOO님의 숙소</TitleText>
