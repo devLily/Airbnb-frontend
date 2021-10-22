@@ -265,7 +265,7 @@ const CheckBoxDiv = styled.div`
 `;
 
 const InputCheck = styled.input`
-  width:20px;
+  width:20px
 `;
 
 const InfoMsg2 = styled.p`
