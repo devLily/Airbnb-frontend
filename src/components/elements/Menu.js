@@ -16,7 +16,6 @@ export default function Menu({ toggleMenu }) {
   const handleClickOutside = useCallback(
     (event) => {
       const isMenuElementChildren = menuRef.current.contains(event.target);
-      console.log("isMenuElementChildren", isMenuElementChildren);
       if (menuRef.current && !isMenuElementChildren) {
         toggleMenu(false);
       }
@@ -33,9 +32,7 @@ export default function Menu({ toggleMenu }) {
   }, [handleClickOutside, menuRef]);
 
   const cookies = new Cookies();
-  const isLogin = cookies.get("token") ? true : false;
-  console.log("이즈로그인", isLogin);
-
+  const isLogin = cookies.get('token') ? true : false;
   const openLogin = () => {
     dispatch(modalActions.ShowLogin(true));
   };
@@ -45,19 +42,23 @@ export default function Menu({ toggleMenu }) {
   };
 
   const logOut = () => {
-    cookies.remove("token");
-    history.replace("/");
-  };
+    cookies.remove('token')
+    history.replace("/")
+  }
 
   if (!isLogin) {
     return (
       <MenuContainer className="menu-container" ref={menuRef}>
         <MenuListWrap>
           <MenuListItem>
-            <MenuListButton onClick={openTempLogin}>로그인</MenuListButton>
+            <MenuListButton onClick={openTempLogin}>
+              로그인
+            </MenuListButton>
           </MenuListItem>
           <MenuListItem>
-            <MenuListButton onClick={openLogin}>회원가입</MenuListButton>
+            <MenuListButton onClick={openLogin}>
+              회원가입
+            </MenuListButton>
           </MenuListItem>
         </MenuListWrap>
       </MenuContainer>

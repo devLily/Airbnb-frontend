@@ -47,7 +47,6 @@ export default function Main(props) {
               집을 공유하여 부수입을 올리고 새로운
               <br /> 가능성을 만나세요
             </HostText>
-            <HostBtn>자세히 알아보기</HostBtn>
           </HostWrap>
         </HostingSection>
       </PostSection>

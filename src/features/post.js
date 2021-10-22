@@ -36,12 +36,8 @@ const getPostList = (location) => {
     apis
       .getListbyLocations(location)
       .then((res) => {
-        console.log("results:", res.data.object);
         const postList = res.data.object;
         dispatch(loadPosts(postList));
-
-        //dispatch(setLocation(location));
-        //window.location.href = `/searches/${location}`;
       })
       .catch((error) => {
         window.alert("게시물을 불러오는데 실패하였습니다.");
@@ -55,8 +51,6 @@ const PostMiddleWare = (contents) => {
     apis
       .createPost({ ...contents, cost: Number(contents.cost) })
       .then((res) => {
-        console.log(res);
-        console.log(contents);
         window.alert("게시물 업로드 성공");
         window.location.href = "/";
       })
@@ -76,8 +70,6 @@ export default handleActions(
 
     [ADD_POST]: (state, action) =>
       produce(state, (draft) => {
-        // console.log(action.payload.)
-        // draft.list = action.payload.list;
         draft.list.push(action.payload.list);
       }),
     [SET_LOCATION]: (state, action) =>

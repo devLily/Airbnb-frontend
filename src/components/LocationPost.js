@@ -71,12 +71,16 @@ export default function LocationPost(props) {
       {locationList.map((post) => {
         const { key, src, text, disText, location } = post;
         return (
-          // <LocationLink key={key} to={`/searches?location=${location}`}>
+          <Link key={key} to={`/post?location=${location}`}>
           <LocationLink key={key} to={`/searches/${location}`}>
             <Image
               key={key}
               src={src}
               size="small"
+              text={text}
+              disText={disText}
+            />
+          </Link>
               text={location}
               disText={disText}
             />
@@ -90,3 +94,4 @@ export default function LocationPost(props) {
 const LocationLink = styled(Link)`
   text-decoration-line: none;
 `;
+

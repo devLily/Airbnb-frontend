@@ -27,27 +27,21 @@ const Signup = (props) => {
     email: eMail[0].email,
     password: pw,
   };
-  console.log("사인업데이터", signUpData);
-  console.log("생년월일타입확인", typeof userName);
-
+  
   const changeFN = (e) => {
     setFirstName(e.target.value);
-    console.log("퍼스트네임", e.target.value);
   };
 
   const changeLN = (e) => {
     setLastName(e.target.value);
-    console.log("라스트네임", e.target.value);
   };
 
   const changeBirth = (e) => {
     setBirth(e.target.value);
-    console.log("생년월일", e.target.value);
   };
 
   const changePW = (e) => {
     setPW(e.target.value);
-    console.log("패스워드", e.target.value);
   };
 
   const addAccount = () => {
@@ -97,10 +91,10 @@ const Signup = (props) => {
           <InputDiv>
             <InputNormal
               placeholder="비밀번호"
+              type="password"
               onChange={changePW}
             ></InputNormal>
             <Span></Span>
-            {/* <Label>비밀번호</Label> */}
             <InfoMsg>
               아래의 동의 및 계속하기 버튼을 선택하면, 에어비앤비의 서비스 약관,
               결제 서비스 약관, 개인정보 처리방침, 차별 금지 정책에 동의하는
@@ -273,7 +267,7 @@ const CheckBoxDiv = styled.div`
 `;
 
 const InputCheck = styled.input`
-  width: 20px;
+  width:20px
 `;
 
 const InfoMsg2 = styled.p`

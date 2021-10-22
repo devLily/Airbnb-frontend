@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { history } from "../app/configStore";
 import { FaSearch } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -15,9 +14,8 @@ import Menu from "./elements/Menu";
 export default function Header(props) {
   const dispatch = useDispatch();
   const { position } = props;
-
-  const locations = useLocation();
-
+  const location = useLocation();
+  
   const [searchInput, setSearchInput] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -27,17 +25,19 @@ export default function Header(props) {
 
   const ChangeSearchWord = (e) => {
     setSearchInput(e.target.value);
-    console.log("searchInput", searchInput);
+  };
+
+  const getKeywordList = () => {
+    dispatch(postActions.getPostList(searchInput));
   };
 
   const searchKeyword = () => {
-    console.log("searchInput", searchInput);
     history.push(`/searches/${searchInput}`);
   };
 
   const { y: scrollY } = useWindowScroll();
-
-  const isOnTop = scrollY === 0 && locations.pathname === "/";
+  
+  const isOnTop = scrollY === 0 && location.pathname === "/";
 
   if (position === "sticky") {
     return (
@@ -51,6 +51,7 @@ export default function Header(props) {
         </LogoWrap>
         <StcInputWrap>
           <StickyInput value={searchInput} onChange={ChangeSearchWord} />
+          <StickyBtn onClick={getKeywordList}>
           <StickyBtn onClick={searchKeyword}>
             <FaSearch size={13} color="white" />
           </StickyBtn>

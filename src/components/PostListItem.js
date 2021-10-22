@@ -1,35 +1,27 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 import { ImStarEmpty } from "react-icons/im";
 import { AiFillStar } from "react-icons/ai";
+import { ImStarEmpty } from "react-icons/im";
 import { BsSuitHeart } from "react-icons/bs";
 
 import Image from "../components/elements/Image";
 
 export default function PostListItem({ post }) {
-  //const user = useSelector((state) => state.user.)
   const { image, roomName, cost, contents } = post;
-  console.log("post:", post);
+
   return (
     <PostListWrap>
       <PostListItems>
         <ImageWrap>
-          {/* <Images src="/images/eorn.jpeg" alt="" /> */}
-          <Images
-            src={
-              image
-                ? image
-                : "http://www.cleandropleon.com/sistema/assets/images/services/default.png"
-            }
-            alt=""
-          />
+          <Images src="/images/eorn.jpeg" alt="" />
         </ImageWrap>
         <DetailWrap>
           <TitleText>OOOO님의 숙소</TitleText>
-          {/* <TitleText>{user}님의 숙소</TitleText> */}
           <RoomName>{roomName}</RoomName>
           <TitleText>{contents}</TitleText>
+          <TitleText>{cost}원</TitleText>
           <StarWrap>
             <ImStarEmpty />
             <span>0.0 (후기 0개)</span>
@@ -76,6 +68,15 @@ const Images = styled.img`
   border-radius: 6px;
   width: 300px;
   height: 300px;
+`;
+
+const SpanTitle = styled.span`
+  font-size: 14px;
+  padding: 5px;
+  line-height: 18px;
+  color: var(--gp-explore-page-title-kicker-text-color, #222222);
+  background-color: var(--gp-explore-page-title-kicker-bgcolor);
+  padding-bottom: 8px;
 `;
 
 const TitleText = styled.p`

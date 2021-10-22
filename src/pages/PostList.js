@@ -10,7 +10,6 @@ export default function PostList(props) {
   const postList = useSelector((state) => state.post.list);
   const { location } = useParams();
   const history = useHistory();
-  console.log("location!!!", location);
 
   useEffect(() => {
     console.log("location!!!", location);
