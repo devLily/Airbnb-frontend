@@ -26,7 +26,7 @@ export default function PostListItem({ post }) {
           />
         </ImageWrap>
         <DetailWrap>
-          <TitleText>user님의 숙소</TitleText>
+          <TitleText>OOOO님의 숙소</TitleText>
           {/* <TitleText>{user}님의 숙소</TitleText> */}
           <RoomName>{roomName}</RoomName>
           <TitleText>{contents}</TitleText>
@@ -44,7 +44,7 @@ export default function PostListItem({ post }) {
 }
 
 const PostListWrap = styled.ul`
-  list-type: none;
+  list-style: none;
   display: grid;
   gap: 12px;
   grid-template-rows: repeat(2, auto);
@@ -53,9 +53,10 @@ const PostListWrap = styled.ul`
 `;
 
 const PostListItems = styled.li`
+  list-style: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: 5px 0;
   padding: 5px;
@@ -66,10 +67,13 @@ const DetailWrap = styled.div`
   flex-direction: column;
   align-items: flex-start;
   align-content: space-around;
+  flex: 1;
+  padding-left: 10px;
 `;
 const ImageWrap = styled.div``;
 
 const Images = styled.img`
+  border-radius: 6px;
   width: 300px;
   height: 300px;
 `;
@@ -83,6 +87,7 @@ const TitleText = styled.p`
 const RoomName = styled.p`
   font-size: 18px;
   font-weight: 500;
+  padding: 5px;
 `;
 
 const StarWrap = styled.div`
@@ -90,6 +95,7 @@ const StarWrap = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 5px;
 `;
 
 const HeartWrap = styled.div`

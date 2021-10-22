@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import PostListItem from "../components/PostListItem";
 import { actionCreators as postActions } from "../features/post";
@@ -9,15 +9,20 @@ export default function PostList(props) {
   const dispatch = useDispatch();
   const postList = useSelector((state) => state.post.list);
   const { location } = useParams();
+  const history = useHistory();
+  console.log("location!!!", location);
 
   useEffect(() => {
-    console.log(location);
-
+    console.log("location!!!", location);
+    if (!location) {
+      alert("지역을 검색해주세요!");
+      history.push("/");
+    }
     if (!postList) {
       window.alert("등록된 포스트가 없습니다");
     }
     dispatch(postActions.getPostList(location));
-  }, []);
+  }, [location]);
   return (
     <PostListContainer>
       <HeaderWrap>
