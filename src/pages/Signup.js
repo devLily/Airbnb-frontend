@@ -56,11 +56,19 @@ const Signup = (props) => {
     dispatch(modalActions.ShowWelcome(true));
   };
 
+  const goBack = () => {
+    dispatch(modalActions.ShowLogin(true));
+    dispatch(modalActions.ShowSignup(false));
+  }
+
   return (
     <React.Fragment>
       <Wrap>
         <ModalBG>
+          <TitleDiv>
+          <ExitBtn onClick={goBack}>{'<'}</ExitBtn>
           <Title>회원 가입 완료하기</Title>
+          </TitleDiv>
           <Hr></Hr>
           <InputTop placeholder="이름(예: 길동)" onChange={changeFN}></InputTop>
           <InputBottom
@@ -70,11 +78,11 @@ const Signup = (props) => {
           <InfoMsg>
             정부 발급 신분증에 표시된 이름과 일치하는지 확인하세요.
           </InfoMsg>
-          <InputNormal
+          <InputDate
             type="date"
-            placeholder="생년월일"
+            data-placeholder="생년월일" required aria-required="true"
             onChange={changeBirth}
-          ></InputNormal>
+          ></InputDate>
           <InfoMsg>
             만 18세 이상의 성인만 회원으로 가입할 수 있습니다. 생일은
             에어비앤비의 다른 회원에게 공개되지 않습니다.
@@ -113,7 +121,7 @@ const Signup = (props) => {
             수신을 거부할 수 있습니다.
           </InfoMsg>
           <CheckBoxDiv>
-            <input type="checkbox" name="" value="" />
+            <InputCheck type="checkbox" name="" value="" />
             <InfoMsg2>
               에어비앤비에서 보내는 마케팅 메시지를 받고 싶지 않습니다.
             </InfoMsg2>
@@ -148,6 +156,28 @@ const Wrap = styled.div`
   flex-direction: column;
 `;
 
+const TitleDiv = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+`;
+
+const ExitBtn = styled.button`
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 5px;
+  top: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+`;
+
 const Title = styled.p`
   font-size: 16px;
   font-weight: 700;
@@ -171,7 +201,7 @@ const Hr = styled.hr`
 const InputTop = styled.input`
   width: 90%;
   height: 56px;
-  margin: 10px auto -1px auto;
+  margin: 10px auto -3px auto;
   border: 1px solid #afafaf;
   border-radius: 8px 8px 0 0;
 `;
@@ -189,6 +219,17 @@ const InputDiv = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
+`;
+
+const InputDate = styled.input`
+  width: 90%;
+  height: 56px;
+  margin: auto;
+  border: 1px solid #afafaf;
+  border-radius: 8px;
+  &::before {content:attr(data-placeholder); width:100%; color:#858585;}
+  &:focus::before,
+  &:valid::before {display:none}
 `;
 
 const InputNormal = styled.input`
@@ -221,6 +262,10 @@ const CheckBoxDiv = styled.div`
   display: flex;
   flex-direction: row;
   margin: auto;
+`;
+
+const InputCheck = styled.input`
+  width:20px;
 `;
 
 const InfoMsg2 = styled.p`

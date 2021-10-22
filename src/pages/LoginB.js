@@ -15,7 +15,7 @@ const LoginB = (props) => {
     const [eMail, setEmail] = React.useState();
 
     const eMailData = {
-        email : eMail
+        email: eMail
     }
     console.log("이메일데이터", eMailData)
 
@@ -29,13 +29,20 @@ const LoginB = (props) => {
         dispatch(modalActions.ShowSignup(true));
         dispatch(userActions.createEmail(eMailData));
     }
+    
+    const exitModal = () => {
+        dispatch(modalActions.ShowLogin_B(false));
+    }
 
 
     return (
         <React.Fragment>
             <ModalBG>
                 <Wrap>
-                    <Title>로그인 또는 회원가입</Title>
+                    <TitleDiv>
+                        <ExitBtn onClick={exitModal}>+</ExitBtn>
+                        <Title>로그인 또는 회원가입</Title>
+                    </TitleDiv>
                     <Hr></Hr>
                     <SubTitle>에어비앤비에 오신 것을 환영합니다.</SubTitle>
                     <InputNormal onChange={changeEM} placeholder="이메일"></InputNormal>
@@ -110,6 +117,26 @@ const Wrap = styled.div`
     flex-direction: column;
 `;
 
+const TitleDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: relative;
+`;
+
+const ExitBtn = styled.button`
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  margin: 0px 0px 0px 3px;
+  font-size: 30px;
+  font-weight: 500;
+  background-color: #ffffff00;
+  border: none;
+  border-radius: 5px;
+  transform: rotate(45deg);
+  outline: none;
+`;
+
 const Title = styled.p`
     font-size: 16px;
     font-weight: 700;
@@ -121,13 +148,6 @@ const SubTitle = styled.p`
     font-size: 22px;
     font-weight: 500;
     margin: 20px auto 20px auto;
-`;
-
-const InfoMsg = styled.p`
-    width: 90%;
-    margin: 10px auto 18px auto;
-    font-size: 12px;
-    color: #000000;
 `;
 
 const Hr = styled.hr`
