@@ -6,7 +6,7 @@ import Login from "./Login";
 import LoginB from "./LoginB";
 import Signup from "./Signup";
 import Welcome from "./Welcome";
-import Templogin from "./TempLogin";
+import Templogin from "./Templogin";
 import LocationPost from "../components/LocationPost";
 import FeaturePost from "../components/FeaturePost";
 import ExperPost from "../components/ExperPost";

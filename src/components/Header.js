@@ -15,7 +15,7 @@ export default function Header(props) {
   const dispatch = useDispatch();
   const { position } = props;
   const location = useLocation();
-  
+
   const [searchInput, setSearchInput] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -36,7 +36,7 @@ export default function Header(props) {
   };
 
   const { y: scrollY } = useWindowScroll();
-  
+
   const isOnTop = scrollY === 0 && location.pathname === "/";
 
   if (position === "sticky") {
@@ -51,7 +51,6 @@ export default function Header(props) {
         </LogoWrap>
         <StcInputWrap>
           <StickyInput value={searchInput} onChange={ChangeSearchWord} />
-          <StickyBtn onClick={getKeywordList}>
           <StickyBtn onClick={searchKeyword}>
             <FaSearch size={13} color="white" />
           </StickyBtn>
