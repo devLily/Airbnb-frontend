@@ -11,6 +11,7 @@ export default function PostWriite(props) {
   const inputFile = useRef();
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
+  const user = useSelector((state) => state.user.list);
   const image = useSelector((state) => state.image.imageUrl);
   const isUploading = useSelector((state) => state.image.isUpload);
   const [inputValue, setInputValue] = useState({
@@ -38,12 +39,8 @@ export default function PostWriite(props) {
   };
 
   const selectFile = (e) => {
-    console.log("target", e.target.files[0]);
-    console.log(inputFile.current);
-
     const reader = new FileReader();
     const file = e.target.files[0];
-    //const file = inputFile.current.files[0];
 
     reader.readAsDataURL(file);
 
@@ -67,7 +64,6 @@ export default function PostWriite(props) {
       alert("필수 입력값입니다");
       return;
     }
-    console.log({ ...inputValue, image });
     dispatch(postActions.PostMiddleWare({ ...inputValue, image }));
   };
 

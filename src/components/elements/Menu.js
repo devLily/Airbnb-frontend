@@ -8,8 +8,6 @@ import { actionCreators as userActions } from "../../features/user";
 
 import styled from "styled-components";
 
-
-
 export default function Menu({ toggleMenu }) {
   const menuRef = useRef();
   const dispatch = useDispatch();
@@ -18,7 +16,6 @@ export default function Menu({ toggleMenu }) {
   const handleClickOutside = useCallback(
     (event) => {
       const isMenuElementChildren = menuRef.current.contains(event.target);
-      console.log("isMenuElementChildren", isMenuElementChildren);
       if (menuRef.current && !isMenuElementChildren) {
         toggleMenu(false);
       }
@@ -36,8 +33,6 @@ export default function Menu({ toggleMenu }) {
 
   const cookies = new Cookies();
   const isLogin = cookies.get('token') ? true : false;
-  console.log("이즈로그인", isLogin)
-
   const openLogin = () => {
     dispatch(modalActions.ShowLogin(true));
   };
@@ -51,7 +46,7 @@ export default function Menu({ toggleMenu }) {
     history.replace("/")
   }
 
-  if(!isLogin){
+  if (!isLogin) {
     return (
       <MenuContainer className="menu-container" ref={menuRef}>
         <MenuListWrap>
@@ -72,16 +67,13 @@ export default function Menu({ toggleMenu }) {
 
   return (
     <MenuContainer className="menu-container" ref={menuRef}>
-        <MenuListWrap>
-          <MenuListItem>
-            <MenuListButton onClick={logOut}>
-              로그아웃
-            </MenuListButton>
-          </MenuListItem>
-        </MenuListWrap>
-      </MenuContainer>
-  )
-  
+      <MenuListWrap>
+        <MenuListItem>
+          <MenuListButton onClick={logOut}>로그아웃</MenuListButton>
+        </MenuListItem>
+      </MenuListWrap>
+    </MenuContainer>
+  );
 }
 
 const MenuContainer = styled.div`
@@ -104,10 +96,8 @@ const MenuListItem = styled.li`
   list-style: none;
   border-top: 1px solid #eeeeee;
   width: 100%;
-
   &:first-child {
     border-top: 0;
-
     button {
       border-top-left-radius: 6px;
       border-top-right-radius: 6px;
@@ -130,7 +120,6 @@ const MenuListButton = styled.button`
   line-height: 40px;
   width: 100%;
   padding-left: 20px;
-
   &:hover {
     background-color: #eeeeee;
   }

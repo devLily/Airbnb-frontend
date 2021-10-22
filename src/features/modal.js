@@ -1,5 +1,3 @@
-//컴포넌트 노출 제어 모듈
-
 import produce from "immer";
 import {createAction, handleActions} from "redux-actions";
 
@@ -16,6 +14,7 @@ const LOGIN_B = "LOGIN_B";
 const SIGNUP = "SIGN_UP";
 const WELCOME = "WELCOME";
 const TEMPLOGIN = "TEMPLOGIN";
+
 
 const ShowLogin = createAction(LOGIN,(boolean)=>({boolean}));
 const ShowLogin_B = createAction(LOGIN_B,(boolean)=>({boolean}));

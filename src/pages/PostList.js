@@ -1,15 +1,32 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import PostListItem from "../components/PostListItem";
+import { actionCreators as postActions } from "../features/post";
 
 export default function PostList(props) {
+  const dispatch = useDispatch();
   const postList = useSelector((state) => state.post.list);
+  const { location } = useParams();
+  const history = useHistory();
+
+  useEffect(() => {
+    console.log("location!!!", location);
+    if (!location) {
+      alert("지역을 검색해주세요!");
+      history.push("/");
+    }
+    if (!postList) {
+      window.alert("등록된 포스트가 없습니다");
+    }
+    dispatch(postActions.getPostList(location));
+  }, [location]);
   return (
     <PostListContainer>
       <HeaderWrap>
         <SpanTitle>300개 이상의 숙소</SpanTitle>
-        <TextTitle>부산의 숙소</TextTitle>
+        <TextTitle>{location}의 숙소</TextTitle>
         <HeaderButtonWrap>
           <PostListItems>
             <LiButton>취소 수수료 없음</LiButton>
@@ -40,7 +57,7 @@ export default function PostList(props) {
         </TitleTextSec>
       </HeaderWrap>
       {postList.map((post) => {
-        return <PostListItem key={post.postId} post={post} />;
+        return <PostListItem key={post.id} post={post} />;
       })}
     </PostListContainer>
   );

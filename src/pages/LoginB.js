@@ -7,17 +7,13 @@ import Button from "../components/elements/Button";
 import { actionCreators as userActions } from "../features/user"
 import { actionCreators as modalActions } from "../features/modal";
 
-
 const LoginB = (props) => {
-
     const dispatch = useDispatch();
-
     const [eMail, setEmail] = React.useState();
 
     const eMailData = {
         email: eMail
     }
-    console.log("이메일데이터", eMailData)
 
     const changeEM = (e) => {
         setEmail(e.target.value)
@@ -33,7 +29,6 @@ const LoginB = (props) => {
     const exitModal = () => {
         dispatch(modalActions.ShowLogin_B(false));
     }
-
 
     return (
         <React.Fragment>
@@ -112,9 +107,9 @@ const ModalBG = styled.div`
 `;
 
 const Wrap = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const TitleDiv = styled.div`
@@ -189,5 +184,5 @@ const HrText = styled.div`
     }
 `;
 
-
 export default LoginB;
+

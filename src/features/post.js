@@ -7,10 +7,12 @@ import { actionCreators as imageActions } from "./image";
 import moment from "moment";
 
 const LOAD_POSTS = "LOAD_POSTS";
+const SET_LOCATION = "SET_LOCATION";
 const ADD_POST = "post/ADD_POST";
 const LOADING = "post/LOADING";
 
 const loadPosts = createAction(LOAD_POSTS, (list) => ({ list }));
+const setLocation = createAction(SET_LOCATION, (location) => ({ location }));
 //const setPost = createAction(SET_POST, (postList) => ({ postList }));
 //const addPost = createAction(ADD_POST, (post) => ({ post }));
 const loading = createAction(LOADING, (isLoading) => ({ isLoading }));
@@ -18,6 +20,7 @@ const loading = createAction(LOADING, (isLoading) => ({ isLoading }));
 const initialState = {
   list: [],
   isLoading: false,
+  location: "",
 };
 
 const initialPost = {
@@ -29,12 +32,10 @@ const initialPost = {
 };
 
 const getPostList = (location) => {
-  return (dispatch) => {
+  return (dispatch, { history }) => {
     apis
       .getListbyLocations(location)
       .then((res) => {
-        console.log("results:", res.data.results);
-        console.log("results:", res.data.object);
         const postList = res.data.object;
         dispatch(loadPosts(postList));
       })
@@ -50,8 +51,6 @@ const PostMiddleWare = (contents) => {
     apis
       .createPost({ ...contents, cost: Number(contents.cost) })
       .then((res) => {
-        console.log(res);
-        console.log(contents);
         window.alert("게시물 업로드 성공");
         window.location.href = "/";
       })
@@ -71,9 +70,11 @@ export default handleActions(
 
     [ADD_POST]: (state, action) =>
       produce(state, (draft) => {
-        // console.log(action.payload.)
-        // draft.list = action.payload.list;
         draft.list.push(action.payload.list);
+      }),
+    [SET_LOCATION]: (state, action) =>
+      produce(state, (draft) => {
+        draft.location = action.payload.location;
       }),
   },
   initialState
@@ -83,4 +84,5 @@ export const actionCreators = {
   loadPosts,
   getPostList,
   PostMiddleWare,
+  setLocation,
 };

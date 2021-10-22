@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
@@ -21,6 +21,9 @@ export default function App() {
             <Route path="/" component={Main} exact />
             <Route path="/write" component={PostWrite} exact />
             <Route path="/posts" component={PostList} exact />
+            <Route path="/rooms" component={PostWrite} exact />
+            <Route path="/searches/:location" component={PostList} exact />
+            <Redirect from="*" to="/" />
           </Switch>
         </MainContainer>
       </ConnectedRouter>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { history } from "../app/configStore";
 import { FaSearch } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdOutlineLanguage } from "react-icons/md";
@@ -14,6 +15,7 @@ export default function Header(props) {
   const dispatch = useDispatch();
   const { position } = props;
   const location = useLocation();
+  
   const [searchInput, setSearchInput] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -29,8 +31,12 @@ export default function Header(props) {
     dispatch(postActions.getPostList(searchInput));
   };
 
-  const { y: scrollY } = useWindowScroll();
+  const searchKeyword = () => {
+    history.push(`/searches/${searchInput}`);
+  };
 
+  const { y: scrollY } = useWindowScroll();
+  
   const isOnTop = scrollY === 0 && location.pathname === "/";
 
   if (position === "sticky") {
@@ -46,11 +52,12 @@ export default function Header(props) {
         <StcInputWrap>
           <StickyInput value={searchInput} onChange={ChangeSearchWord} />
           <StickyBtn onClick={getKeywordList}>
+          <StickyBtn onClick={searchKeyword}>
             <FaSearch size={13} color="white" />
           </StickyBtn>
         </StcInputWrap>
         <NavWrap>
-          <HostLink to="/write">호스트 되기</HostLink>
+          <HostLink to="/rooms">호스트 되기</HostLink>
           <MdOutlineLanguage color={isOnTop ? "white" : "#222222"} />
           <Label>
             <LabelBtn onClick={() => toggleMenu(true)}>
